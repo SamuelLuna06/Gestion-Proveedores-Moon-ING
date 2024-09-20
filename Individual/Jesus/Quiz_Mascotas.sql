@@ -128,3 +128,13 @@ select idMascota from Mascota where idMascota <> 2;
 select enfermedad from Vacuna where enfermedad = "Fiebre";
 
 select * from Quiz.Vacuna where Quiz.Vacuna.enfermedad = "Fiebre";
+
+select nombreProducto from Producto where marca like "m%";
+select nombreProducto from Producto where marca not like "m%";
+
+
+/*Tarea*/
+
+
+select enfermedad from Vacuna where enfermedad like "Fiebre";
+select nombreCliente from Cliente where nombreCliente not like "%jesus%";
