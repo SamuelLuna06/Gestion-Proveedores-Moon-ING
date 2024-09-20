@@ -22,11 +22,12 @@ CREATE TABLE Producto(
 
 CREATE TABLE Mascota_Vacuna(
 	enfermedad varchar(15),
+    codigoVacunaFK int,
+    idMascotaFK int,
     /*Punto 3:*/
     foreign key (codigoVacunaFK) references Vacuna(codigoVacuna),
     foreign key (idMascotaFK) references Mascota(idMascota)
 );
-
 
 CREATE TABLE Vacuna(
 	codigoVacuna int(11) primary key,
@@ -41,6 +42,7 @@ CREATE TABLE Cliente(
     apellidoCliente varchar(15),
     direccionCliente varchar(10),
     telefono varchar(10),
+    idMascotaFK int,
     /*Punto 3:*/
     foreign key (idMascotaFK) references Mascota(idMascota)
 );
@@ -70,7 +72,7 @@ describe Producto;
 insert into Producto values(1,"Shampoo","Milton",5000,1);
 insert into Producto values(2,"Talco","Juan",4000,1);
 
-
+describe Mascota;
 
 describe Vacuna;
 
@@ -87,4 +89,42 @@ select * from Cliente;
 select * from detalleVacuna;
 
 insert into detalleVacuna values("Fiebre");
-insert into detalleVacuna values("Malestar
+insert into detalleVacuna values("Malestar");
+
+
+select nombreMascota, razaMascota from Mascota;
+/*mascota, producto y vacunas consulta por alias*/
+/*Vacuna*/
+select codigoVacuna as "Codigo" from Vacuna;
+/*Producto*/
+select precio as "Valor" from Producto;
+/*Mascota*/
+select generoMascota as "Genero" from Mascota;
+
+
+
+/*Ordernar*/
+
+/*select nombreCliente from Cliente order by ASC / DSC*/
+
+select nombre, marca from Producto order by precio desc;
+
+
+
+select nombreProducto from Producto where precio = 5000;
+
+select enfermedad from Mascota_Vacuna where codigoVacunaFK = 1;
+
+
+/*2 consultas usando operadores logicos y relacionales en vacuna, mascota y cliente*/
+
+describe Vacuna;
+describe Mascota_Vacuna;
+describe Cliente;
+
+
+select idMascota from Mascota where idMascota <> 2;
+
+select enfermedad from Vacuna where enfermedad = "Fiebre";
+
+select * from Quiz.Vacuna where Quiz.Vacuna.enfermedad = "Fiebre";
