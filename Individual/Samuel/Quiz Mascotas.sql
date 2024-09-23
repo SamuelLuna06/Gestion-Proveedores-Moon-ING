@@ -99,10 +99,17 @@ select telefono, nombreCliente from Cliente where telefono between 123 and 321;
 /*
 select* from table where x like 'Bo%';
 select* from table where x notlike 'Bo%';
-Bo% Termina con
-%Bo Empieza con
+Bo% Empieza con
+%Bo Termina con
 %Bo% Contiene
 */
+select* from Producto;
+select* from Cliente;
+select* from Mascota;
+select* from Vacuna;
 
-select nombreProducto from Producto where marca like 'a%';
-select nombreProducto from Producto where marca not like 'a%';
+select nombreProducto, marca from Producto where marca like 'P%';
+select nombreMascota, razaMascota from Mascota where razaMascota like '%o';
+
+select nombreCliente from Cliente where apellidoCliente not like 'L%';
+select nombreVacuna, enfermedad from Vacuna where enfermedad not like '%e%';
