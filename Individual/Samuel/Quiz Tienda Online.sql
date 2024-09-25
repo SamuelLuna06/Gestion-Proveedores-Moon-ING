@@ -59,7 +59,7 @@ create table Venta
     fechaVenta date not null,
     idClienteFK int,
     idUsuarioFK int,
-    foreign key (idClienteFK) references Clientes(idCliente),
+    foreign key (idClienteFK) references Cliente(idCliente),
     foreign key (idUsuarioFK) references Usuario(idUsuario)
 );
 
@@ -71,14 +71,13 @@ create table Venta_Producto
     idProductoFK int,
 	precioProductoFK float,
     foreign key (idVentaFK) references Venta(idVenta),
-    foreign key (idProductoFK) references Producto(idProducto),
-    foreign key (precioProductoFK) references Producto(precioProducto)
+    foreign key (idProductoFK) references Producto(idProducto)
 );
 
 insert into Producto values ("10001", '', 1.000, "Rana"), ("10002", '', 2.000, "Mousepad"), ("10003", '',  15.000, "Arroz"), ("10004", '', 30.000, "Mouse logitech");
 insert into Usuario values ('', "Samuel", "Cliente"), ('', "Jesus", "Empleado"), ('', "Juliana", "Cliente"), ('', "Paula", "Empleado");
 insert into Cliente values ('', "Samuel", 10/02/2006), ('', "Carlos", 22/06/2004), ('', "Juliana", 01/12/2007), ('', "Cristian", 19/03/2006);
-insert into Venta values ('', 101, 29/02/2024), ('', 102, 12/03/2024), ('', 103, 05/04/2024), ('', 104, 23/09/2024);
+insert into Venta values (101, 29/02/2024), (102, 12/03/2024), (103, 05/04/2024), (104, 23/09/2024);
 
 select* from Producto;
 select codigoBarrasProducto, idProducto from Producto order by precioProducto desc;
@@ -89,5 +88,17 @@ select cantidad, totalVentas from Venta_Producto where precioProductoFK between 
 
 select avg totalVentas from Venta_Producto;
 select sum cantidad from Venta_Producto;
-select sum idCliente from Cliente;
-select idVentaFK, idProductoFK from Venta_Producto where precioProductoFK <= precioProductoFK;
+select count(idCliente) from Cliente;
+select min(idVentaFK) from Venta_Producto;
+
+/*
+Consultar el cliente que tiene la mayor venta
+Consultar cliente y usuario de una venta especifica
+Consultar los productos que compro un cliente especifico
+Consultar todos los clientes que han hecho ventas
+*/
+
+select* from Venta_Producto as VP inner join Cliente as C on C.idCliente where VP.max(precioProductoFK);
+select* from Usuario as U inner join Cliente as C inner join Venta V on U.idUsuario.nombreUsuario and C.idClienteFK.nombreCliente where V.idVenta = 101;
+select* from Cliente as C inner join Producto as P where P.idProducto = C.idCliente;
+select* from Cliente as C inner join Venta as V where C.idCliente = V.idVenta;
