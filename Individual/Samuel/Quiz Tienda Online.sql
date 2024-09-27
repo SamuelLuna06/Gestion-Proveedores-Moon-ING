@@ -75,11 +75,10 @@ create table Venta_Producto
 );
 
 insert into Producto values ("10001", '', 1.000, "Rana"), ("10002", '', 2.000, "Mousepad"), ("10003", '',  15.000, "Arroz"), ("10004", '', 30.000, "Mouse logitech");
-insert into Usuario values ('', "Samuel", "Cliente"), ('', "Jesus", "Empleado"), ('', "Juliana", "Cliente"), ('', "Paula", "Empleado");
-insert into Cliente values ('', "Samuel", 10/02/2006), ('', "Carlos", 22/06/2004), ('', "Juliana", 01/12/2007), ('', "Cristian", 19/03/2006);
-insert into Venta values (101, 29/02/2024), (102, 12/03/2024), (103, 05/04/2024), (104, 23/09/2024);
+insert into Usuario values ('', "Samuel", "Empleado"), ('', "Jesus", "Empleado"), ('', "Juliana", "Cliente"), ('', "Paula", "Empleado");
+insert into Cliente values ('', "Juan Pablo", "2006-02-10"), ('', "Carlos", "2004-06-22"), ('', "Juliana", "2007-12-01"), ('', "Cristian", "2006-03-19");
+insert into Venta values ('', 101, "2024-02-29", 1, 4), ('', 102, "2024-03-12", 2, 3), ('', 103, "2024-04-05", 3, 2), ('', 104, "2024-09-23", 4, 1);
 
-select* from Producto;
 select codigoBarrasProducto, idProducto from Producto order by precioProducto desc;
 select idUsuario, nombreUsuario from Usuario where rolUsuario = "Empleado";
 select idVenta, numeroVenta from Venta where fechaVenta/*??*/;
@@ -102,3 +101,20 @@ select* from Venta_Producto as VP inner join Cliente as C on C.idCliente where V
 select* from Usuario as U inner join Cliente as C inner join Venta V on U.idUsuario.nombreUsuario and C.idClienteFK.nombreCliente where V.idVenta = 101;
 select* from Cliente as C inner join Producto as P where P.idProducto = C.idCliente;
 select* from Cliente as C inner join Venta as V where C.idCliente = V.idVenta;
+
+/*
+update tabla set campo = x when campo = x
+delete from tabla where campo = x;
+*/
+
+insert into Cliente values ('', "Tatiana cabrera", "1975-05-20");
+insert into Producto values ("10005", '', 10.000, "Medias para bebe");
+insert into Venta values ('',105, "2024-09-27", 5, 1);
+insert into Venta_Producto values (2, 1, 5, 10005, 10.000);
+
+select* from Cliente;
+select* from Producto;
+select* from Usuario;
+select* from Venta;
+select* from Venta_Producto;
+describe Venta_Producto;
