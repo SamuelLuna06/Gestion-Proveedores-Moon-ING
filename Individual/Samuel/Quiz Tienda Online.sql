@@ -118,3 +118,63 @@ select* from Usuario;
 select* from Venta;
 select* from Venta_Producto;
 describe Venta_Producto;
+
+/*
+Procedimientos almacenados -> Subrutinas almacenar la informacion en la BD.
+Delimiter //
+
+create procedure nombre_procedimiento (parametro)
+begin
+--Logica sentencia que se quiere utilizar
+end//
+Delimiter;
+*/
+describe producto;
+
+Delimiter //
+create procedure registrarProducto(idProducto int, codigoBarrasProducto varchar(5), precioProducto float, nombreProducto varchar(20))
+begin
+insert into Producto values (idProducto, codigoBarrasProducto, precioProducto, nombreProducto);
+end //
+Delimiter ;
+
+Delimiter //
+create procedure inactivarCliente(idCliente int, codigoBarrasProducto varchar(5), precioProducto float, nombreProducto varchar(20))
+begin
+insert into Producto values (idProducto, codigoBarrasProducto, precioProducto, nombreProducto);
+end //
+Delimiter ;
+
+call registrarProducto('', "10006", 16.500, "Six pack de cerveza");
+
+create view consultarCliente as select* from cliente;
+
+select* from consultarCliente;
+
+/*
+SUBCONSULTAS
+Son consultas andidadas dentro de otra consulta.
+Sintaxis:
+select  campo1, campo2 from tabla1 where campo2 = (select campo2X from tabla2 where X)
+Ejemplo:
+1. Consultar los datos de los empleados y su sueldo promedio.
+	select idEmpleado, nombreEmpleado, salario, (select avg(salario) from Empleado) as promedio from Empleado; 
+2. Consultar los empleados que tengan un salario mayor al promedio.
+	select idEmpleado, nombreEmpleado, salario, (select avg(salario) from Empleado) as promedio from Empleado where salario > promedio;
+	select idEmpleado, nombreEmpleado, salario from Empleado where salario > (select avg(salario) from Empleado);
+3. Consultar el ára a la que pertenece un empleado.
+	select idEmpleado, nombreEmpleado, idArea, nombreArea, from Empleado where idArea in (select idArea from Area where nombreEmpleado = 'Juan')
+*/
+
+/*
+QUIZ
+1. Calcular los productos que se vendan a un precio mayor del promedio de todos los productos.
+2. Mostrar los clientes que el total de compra sea mayor al promedio de compras de la tienda.
+3. Mostrar el promedio de precios de productos comprados por clientes.
+*/
+
+select* from Producto where precioProducto > (select avg(precioProducto) from Producto);
+
+select* from Venta_Producto as VP inner join Cliente as C on C.idCliente where cantidad > VP.avg(cantidad);
+
+select* from Venta_Producto as VP inner join Cliente as C on C.idCliente where VP.avg(precioProductoFK);
