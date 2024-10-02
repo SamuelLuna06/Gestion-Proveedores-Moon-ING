@@ -1,27 +1,34 @@
-/*crear una base de datos que se llame tienda online, habilitar la bd, Crear tablas : producto(id- autoincrement, codigo de barras), usuarios, 
-clientes(autoincrement), ventas(id-autoincrement, #orden),
-4.Realizar relaciones: 
-1 cliente puede realizar muchas ordenes (ventas)
-1 usuario puede generar muchas ordenes 
-un cliente puede comprar muchos productos
-una orden puede contener muchos productos
-un producto puede ser comprado muchas veces
-
-5. minimo 4 insert por tabla
-6. realizar las consultas:
-consulta general de los producto 
-ordenar productos x precio menos a mayor
-consultar los clientes que nacen en enero
-consultar los usuarios con rol de empleado
-consultar las ordenes generados entrea marzo y junio
-consultar producto que tengan la letra r
-consultar las ventas que tengan productos con precios de 15.000
-
-proemdio ventas, sumatoria total, cantidad de clientes, venta mas economica hecha
+/*
+1. Crear una base de datos que se llame tienda online.
+2. Habilitar la base de datos.
+3. Crear tablas:
+	a. Producto. -> id (Autoincrement) - codigo de barras
+	b. Usuario.
+    c. Clientes. (Autoincrement)
+    d. Ventas(Orden). -> id (Autoincrement) -> #orden
+4. Realizar relaciones.
+	a. Un cliente puede realizar muchas ordenes (ventas).
+    b. Un ususario puede generar muchas ordenes. 
+    c. Una orden puede contener muchos productos.
+    d. Un producto puede ser comprado muchas veces
+5. Minimo cuatro inserciones por tabla.
+6. Realizar las siguientes consultas:
+	a. Consulta generar de todos los productos.
+    b. Orden productos de menor precio a mayor.
+    c. Consultar los clientes que nacen en enero.
+    d. Consultar los usuarios con rol empleado.
+    e. Consultar las ordenes generedas entre marzo y junio.
+    f. Consultar productos que contengan la letra r.
+    g. Consultar las ventas que tengan productos con precios de 15.000 o 30.000.
+    
+Promedio de ventas
+Suma total de ventas
+Cantidad de Clientes
+Venta mas economica hecha
 */
 
-create database Tienda_Online;
-use Tienda_Online;
+create database Tienda_Online2;
+use Tienda_Online2;
 
 create table Producto
 (
@@ -63,6 +70,8 @@ create table Venta_Producto
     idVentaFK int,
     idProductoFK int,
 	precioProductoFK float,
+    numeroVentaFK int,
+    foreign key (numeroVentaFK) references Venta(numeroVenta),
     foreign key (idVentaFK) references Venta(idVenta),
     foreign key (idProductoFK) references Producto(idProducto),
     foreign key (precioProductoFK) references Producto(precioProducto)
@@ -125,3 +134,54 @@ select* from Cliente as C inner join Venta as V where C.idCliente = V.idVenta;
 
 /*update tabla set atributo where condicion*/
 /*update asistencia set asistencia ='r' where id=14;*/
+
+describe Producto;
+delimiter //
+create procedure registrarProductos (idProducto int, codigoBarrasProducto varchar(5),precioProducto float, nombreProducto varchar(20))
+begin
+
+insert into Producto values (idProducto, codigoBarrasProducto,precioProducto,nombreProducto);
+
+end //
+delimiter ;
+
+
+
+drop procedure registrarProductos;
+
+call registrarProductos ('', "ab1", 15000, "Detergente");
+
+/*
+SUBCONSULTAS
+
+	Son consultas anidadas dentro de otra consulta 
+	select campo_a_consultar, campo_a_consultar1, from tablaGrande(tabla Principal) where columna2 = (select columna2x from tablaPequeña (segundaTabla) where condicion)
+    
+    Consultar los datos de los empleados y su sueldo promedio
+    
+    select idEmpleado, nombreEmpleado, salario, (select avg(salario) from empleado) as promedio from empleado;
+
+	consultar un empleado que tenga un sueldo mayor al sueldo promedio
+    
+    select idEmpleado, nombreEmpleado, salario, (select avg(salario) from empleado) as promedio from empleado where (select avg(salario) from empleado) > promedio;
+																													Arriba esta mal era Salario > promedio
+    
+    select idEmpleado, nombreEmpleado, salario  from empleado where  salario > (select avg(salario) from empleado);  1. 3.
+    
+	Los empleados pertenecen a un area, consultar a que area pertenece un empleado
+    
+    select  idEmpleado, nombreEmpleado, idArea, nombreArea from empleado where idArea in (select idArea from Area where nombreEmpleado = "Juan")2.
+
+
+
+
+*/
+
+/*Calcular los producto que se vendan a un precio mayor del promedio de todos los productos*/
+
+	
+
+/*Mostrar los clientes que el total de compra sea mayor al promedio de compras de la tienda*/
+
+
+/*Mostrar el promedio de precios de productos comprados por un cliente*/
