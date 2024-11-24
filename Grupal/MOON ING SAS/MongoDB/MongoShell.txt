@@ -204,3 +204,63 @@ db.Orden.insertMany([
     "precioTotal": (22000 * 3)
   }
 ]);
+
+==========================================================================================
+#RQF CLASE PRODUCTO
+
+
+db.Producto.find().sort({precio: -1 })
+db.Producto.find().sort({precio: 1 })
+db.Producto.find().sort({nomProducto: -1 })
+db.Producto.find().sort({nomProducto: 1 })
+
+db.Producto.updateOne({_id :ObjectId('6738d60ad6a7ad10178f36b1')},{$set: {nomProducto: "Acero Galvanizado"}})
+db.Producto.updateOne({_id :ObjectId('6738d60ad6a7ad10178f36b1')},{$set: {precio: 50000}})
+
+db.Producto.findOne({_id: ObjectId('6738d60ad6a7ad10178f36b1') })
+
+
+#RQF CLASE PROVEEDOR
+
+
+db.proveedores.updateOne({_id :ObjectId('673559708c076eae077971fb')},{$set: {nomProv: "Don Aceros"}})
+db.proveedores.updateOne({_id :ObjectId('673559708c076eae077971fb')},{$set: {direccion: "Cll 8 bis A"}})
+db.proveedores.updateOne({_id :ObjectId('673559708c076eae077971fc')},{$set: {ubicacion: "MEDELLIN"}})
+db.proveedores.updateOne({_id :ObjectId('673559708c076eae077971fc')},{$set: {contacto: "3214459100"}})
+db.proveedores.updateOne({_id :ObjectId('673559708c076eae077971fd')},{$set: {correo: "jesus.example@urosario.com"}})
+
+db.proveedores.find({ubicacion: "MEDELLIN"})
+db.proveedores.find().sort({nomProv : 1})
+db.proveedores.find().sort({nomProv : -1})
+db.proveedores.find().sort({contacto : 1})
+db.proveedores.find().sort({contacto : -1})
+db.proveedores.find().sort({correo : 1})
+db.proveedores.find().sort({correo : -1})
+db.proveedores.find({_id :ObjectId('673559708c076eae077971fb')})
+
+#RQF CLASE EMPLEADOS
+
+db.empleado.find({estadoEmpleado: true})
+db.empleado.find({estadoEmpleado: false})
+db.empleado.find().sort({CCEmpleado: -1})
+db.empleado.find().sort({CCEmpleado: 1})
+db.empleado.find().sort({nomEmpleado: -1})
+db.empleado.find().sort({nomEmpleado: 1})
+db.empleado.find({_id: ObjectId('67355a6f8c076eae0779720b')})
+
+#RQF CLASE ORDEN
+
+db.Orden.updateOne({_id: ObjectId('6739001ad6a7ad10178f36e1')},{$set: {fechaOrden: new Date ("2024-11-24")}})
+db.Orden.find().sort({precioTotal: 1})
+db.Orden.find().sort({precioTotal: -1})
+db.Orden.find().sort({fechaOrden: 1})
+db.Orden.find().sort({fechaOrden: -1})
+db.Orden.find({fechaOrden: {$gte: new Date("2024-11-20"),$lte: new Date("2024-11-24")}})
+db.Orden.find({{_id: ObjectId('6739001ad6a7ad10178f36e1')}
+
+
+
+
+
+
+
