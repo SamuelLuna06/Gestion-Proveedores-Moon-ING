@@ -1,5 +1,20 @@
 Insertar producto en la base de datos
-db.proveedores.insertOne({nomProv: 'TECNI TORREX',ubicacion: 'BOGOTA',contacto: '3118739686',correo: null, direccion: 'CRA 40 SUR No. 68I – 39'})
+db.proveedores.insertMany([
+    {nomProv: 'ICOMALLAS', ubicacion: 'BOGOTA', contacto: '3107140915', correo: 'ventasbogota@icomallas.com / deysy.gomez@icomallas.com', direccion: 'Bodega 1 : Carrera 27 NÂ° 13-91 B/Paloquemao'},
+    {nomProv: 'ACEROS METALES Y MALLAS LTDA', ubicacion: 'BOGOTA', contacto: '3103449000', correo: 'comercial@amym.co', direccion: 'Calle 93 # 15 59 of. 201'},
+    {nomProv: 'INCOLMALLAS', ubicacion: 'BOGOTA', contacto: '3118480768', correo: 'Ventas@dimetales.com', direccion: 'Calle 37 S #23C-24'},
+    {nomProv: 'DIMETALES', ubicacion: 'BOGOTA', contacto: '3115605339', correo: 'Ventas@dimetales.com', direccion: 'Calle 13 No. 21 -89'},
+    {nomProv: 'HIERROS BOGOTA', ubicacion: 'BOGOTA', contacto: '3174450398', correo: 'hierrosbogotavirtual@gmail.com', direccion: 'Av. Calle 72 # 73A-58'},
+    {nomProv: 'TUVACOL SA', ubicacion: 'BOGOTA', contacto: '6018237779', correo: 'Gerventasper@tuvacol.com', direccion: 'Bodega 1 Manzana B Parque Industrial San JosÃ©'},
+    {nomProv: 'MUNDIAL DE DOBLECES', ubicacion: 'BOGOTA', contacto: '3046706364', correo: 'mundialdedobleces1@hotmail.com', direccion: 'Carrera 70 # 31-51 Sur'},
+    {nomProv: 'PASCO FERRETERIA LTDA', ubicacion: 'BOGOTA', contacto: '3108528773', correo: 'contacto@pascoferreteria.com', direccion: 'CARRERA 25 NO. 13 -12'},
+    {nomProv: 'DISTRIANDAMIOS', ubicacion: 'BOGOTA', contacto: '3114906010', correo: 'infodistriandamios@gmail.com', direccion: 'Calle 18 # 107-24'},
+    {nomProv: 'REALCOL', ubicacion: 'MEDELLIN', contacto: '3502827207', correo: 'info@realcol.com / auxiliar@realcol.com', direccion: 'Las Palmas KilÃ³metro 8. Carrera 10 #10 - 172'},
+    {nomProv: 'RODACHINES INDUSTRIALES Y CIA LTDA', ubicacion: 'BOGOTA', contacto: '3196262028', correo: 'comercial@rodachines.co', direccion: 'Calle 17 # 25-18'},
+    {nomProv: 'ABRASIVOS Y CORTE SAS', ubicacion: 'BOGOTA', contacto: '6012010182', correo: 'ferreteriaabrasivosycorte@hotmail.com', direccion: 'Cra. 28a #17-43'},
+    {nomProv: 'WÃœRTH COLOMBIA', ubicacion: 'BOGOTA', contacto: '318280043', correo: 'ecommerce@wurth.com.co', direccion: 'AC 63 # 74B-42'},
+    {nomProv: 'FERRETERIA GARZON', ubicacion: 'BOGOTA', contacto: '3012992067', correo: 'contacto@ferrealegarzon.com', direccion: 'Carrera 15 # 11 â€“ 68'},
+    {nomProv: 'ROTOFLEX', ubicacion: 'BOGOTA', contacto: '6012683012', correo: 'Servicioalcliente@rotoflex.co / gerencia@rotoflex.co / sugerencia@rotoflex.co / ventas5@rotoflex.co', direccion: 'Calle 24 C No. 25 - 24'},{nomProv: 'TECNI TORREX',ubicacion: 'BOGOTA',contacto: '3118739686',correo: null, direccion: 'CRA 40 SUR No. 68I – 39'}]);
 
 ===============================================================================
 db.Producto.insertMany([
