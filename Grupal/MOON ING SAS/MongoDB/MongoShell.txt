@@ -1,1 +1,191 @@
+Insertar producto en la base de datos
+db.proveedores.insertOne({nomProv: 'TECNI TORREX',ubicacion: 'BOGOTA',contacto: '3118739686',correo: null, direccion: 'CRA 40 SUR No. 68I – 39'})
 
+===============================================================================
+db.Producto.insertMany([
+  { "nomProducto": "MALLA ZARANDA GALVANIZADA", "precio": 12346 },
+  { "nomProducto": "MALLAS EXPANDIDAS", "precio": 17890 },
+  { "nomProducto": "LAMINAS PERFORADAS", "precio": 23641 },
+
+  { "nomProducto": "GAVON TRIPLE TORSION", "precio": 18501 },
+  { "nomProducto": "MALLA TALUD", "precio": 26431 },
+  { "nomProducto": "COLCHOGAVIONES", "precio": 31500 },
+
+  { "nomProducto": "MALLAS", "precio": 12980 },
+  { "nomProducto": "GAVIONES", "precio": 20120 },
+  { "nomProducto": "CERRAMIENTOS", "precio": 15346 },
+  { "nomProducto": "ESTRUCTURAS", "precio": 29700 },
+
+  { "nomProducto": "IMANES PERMANENTES", "precio": 10891 },
+  { "nomProducto": "IMANES CERAMICOS", "precio": 9800 },
+  { "nomProducto": "IMANES NEODIMIO", "precio": 19875 },
+  { "nomProducto": "LAMINA", "precio": 40001 },
+
+  { "nomProducto": "PINTURAS Y SELLANTES", "precio": 12401 },
+  { "nomProducto": "CANDADOS BICICLETAS", "precio": 9200 },
+  { "nomProducto": "CERRADURAS DIGITALES", "precio": 15760 },
+
+  { "nomProducto": "TUBERIAS", "precio": 27000 },
+  { "nomProducto": "VALVULAS DOBLES", "precio": 18201 },
+  { "nomProducto": "ACCESORIOS", "precio": 15081 },
+  { "nomProducto": "MONTAJES INDUSTRIALES", "precio": 32151 },
+
+  { "nomProducto": "TABLEROS ESTAMPADOS", "precio": 47001 },
+  { "nomProducto": "LAMINAS CR", "precio": 31580 },
+  { "nomProducto": "LAMINAS HR", "precio": 25800 },
+  { "nomProducto": "LAMINAS GALVANIZADAS", "precio": 20300 },
+
+  { "nomProducto": "VALVULAS", "precio": 14500 },
+  { "nomProducto": "MANOMETROS", "precio": 13200 },
+  { "nomProducto": "ELECTRODOS", "precio": 12500 },
+  { "nomProducto": "FLACHE", "precio": 18050 },
+  { "nomProducto": "TIJERAS", "precio": 9700 },
+
+  { "nomProducto": "ALQUILER DE ANDAMIOS CERTIFICADOS", "precio": 45000 },
+  { "nomProducto": "ALQUILER DE ANDAMIO TUBULAR", "precio": 40000 },
+
+  { "nomProducto": "RUEDAS INDUSTRIALES", "precio": 8500 },
+  { "nomProducto": "CARROS Y CANASTILLAS DE MERCADO", "precio": 12200 },
+  { "nomProducto": "CARRETILLAS Y PLATAFORMAS", "precio": 22000 },
+
+  { "nomProducto": "RUEDAS TRABAJO LIVIANO", "precio": 8700 },
+  { "nomProducto": "RUEDAS INDUSTRIALES", "precio": 9300 },
+  { "nomProducto": "RODACHINES TRABAJO LIVIANO", "precio": 8700 },
+
+  { "nomProducto": "ABRAZIVOS", "precio": 10500 },
+  { "nomProducto": "DISCOS DE CORTES", "precio": 14200 },
+  { "nomProducto": "ACCESORIOS", "precio": 12900 },
+  { "nomProducto": "HERRAMIENTAS", "precio": 19600 },
+
+  { "nomProducto": "QUIMICOS ADHESIVOS Y SELLANTES", "precio": 18000 },
+  { "nomProducto": "ABRAZADERAS METALICAS", "precio": 13000 },
+  { "nomProducto": "ABRAZADERAS NYLON", "precio": 10200 },
+
+  { "nomProducto": "ADAPTADORES", "precio": 11500 },
+  { "nomProducto": "AICATES", "precio": 8500 },
+  { "nomProducto": "ALMADANAS", "precio": 9400 },
+
+  { "nomProducto": "PULIDORAS", "precio": 27000 },
+  { "nomProducto": "DISPOSITIVOS PORTAHERRAMIENTAS", "precio": 23500 },
+  { "nomProducto": "UNIDADES FLEXIBLES", "precio": 21000 }
+]);
+=========================================================================================
+db.Empleado.insertMany([
+  { "nomEmpleado": "María López", "CCEmpleado": "1012345679", "estadoEmpleado": true },
+  { "nomEmpleado": "Juan Gómez", "CCEmpleado": "1012345680", "estadoEmpleado": false },
+  { "nomEmpleado": "Ana Martínez", "CCEmpleado": "1012345681", "estadoEmpleado": true },
+  { "nomEmpleado": "Pedro García", "CCEmpleado": "1012345682", "estadoEmpleado": false },
+  { "nomEmpleado": "Laura Rodríguez", "CCEmpleado": "1012345683", "estadoEmpleado": true },
+  { "nomEmpleado": "Jorge Ramírez", "CCEmpleado": "1012345684", "estadoEmpleado": true },
+  { "nomEmpleado": "Paula Sánchez", "CCEmpleado": "1012345685", "estadoEmpleado": false },
+  { "nomEmpleado": "José Torres", "CCEmpleado": "1012345686", "estadoEmpleado": true },
+  { "nomEmpleado": "Lucía Mendoza", "CCEmpleado": "1012345687", "estadoEmpleado": true },
+  { "nomEmpleado": "Felipe Muñoz", "CCEmpleado": "1012345688", "estadoEmpleado": false },
+  { "nomEmpleado": "Elena Morales", "CCEmpleado": "1012345689", "estadoEmpleado": true },
+  { "nomEmpleado": "Daniel Herrera", "CCEmpleado": "1012345690", "estadoEmpleado": false },
+  { "nomEmpleado": "Claudia Castro", "CCEmpleado": "1012345691", "estadoEmpleado": true },
+  { "nomEmpleado": "Andrés Ríos", "CCEmpleado": "1012345692", "estadoEmpleado": true },
+  { "nomEmpleado": "Gabriela Pineda", "CCEmpleado": "1012345693", "estadoEmpleado": false },
+  { "nomEmpleado": "Miguel Fernández", "CCEmpleado": "1012345694", "estadoEmpleado": true },
+  { "nomEmpleado": "Sofía Vargas", "CCEmpleado": "1012345695", "estadoEmpleado": true },
+  { "nomEmpleado": "Jesus Peña", CCEmpleado : "1234568799", estadoEmpleado: true}
+]);
+=================================================================================================
+db.Orden.insertMany([
+  {
+    "fechaOrden": new Date("2024-10-01"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797209'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3670'), "cantidad": 5, "precioProducto": 12346 * 5 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3672'), "cantidad": 2, "precioProducto": 23641 * 2 }
+    ],
+    "precioTotal": (12346 * 5) + (23641 * 2)
+  },
+  {
+    "fechaOrden": new Date("2024-10-02"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797210'),
+    "productos": [
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36a4'), "cantidad": 4, "precioProducto": 12000 * 4 },
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36a8'), "cantidad": 3, "precioProducto": 30000 * 3 },
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36ae'), "cantidad": 1, "precioProducto": 32000 }
+    ],
+    "precioTotal": (12000 * 4) + (30000 * 3) + (32000)
+  },
+  {
+    "fechaOrden": new Date("2024-10-03"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797211'),
+    "productos": [
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36b6'), "cantidad": 1, "precioProducto": 26000},
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36b8'), "cantidad": 3, "precioProducto": 28000 * 3 },
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36ce'), "cantidad": 6, "precioProducto": 37000 * 6 },
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36bb'), "cantidad": 8, "precioProducto": 33000 * 8 },
+      { "idProducto": ObjectId('6738d60ad6a7ad10178f36dc'), "cantidad": 2, "precioProducto": 35000 * 2 }
+    ],
+    "precioTotal": (26000) + (28000 * 3) + (37000 * 6) + (33000 * 8) + (35000 * 2)
+  },
+  {
+    "fechaOrden": new Date("2024-10-04"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797212'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3677'), "cantidad": 3, "precioProducto": 20120 * 3 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3678'), "cantidad": 5, "precioProducto": 15346 * 5 }
+    ],
+    "precioTotal": (20120 * 3) + (15346 * 5)
+  },
+  {
+    "fechaOrden": new Date("2024-10-05"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797213'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3679'), "cantidad": 2, "precioProducto": 29700 * 2 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3680'), "cantidad": 4, "precioProducto": 15760 * 4 }
+    ],
+    "precioTotal": (29700 * 2) + (15760 * 4)
+  },
+  {
+    "fechaOrden": new Date("2024-10-06"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797214'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3681'), "cantidad": 5, "precioProducto": 27000 * 5 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3682'), "cantidad": 3, "precioProducto": 18201 * 3 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3694'), "cantidad": 3, "precioProducto": 9300 * 3 }
+    ],
+    "precioTotal": (27000 * 5) + (18201 * 3) + (9300 * 3)
+  },
+  {
+    "fechaOrden": new Date("2024-10-07"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797215'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3699'), "cantidad": 2, "precioProducto": 19600 * 2 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f36a0'), "cantidad": 1, "precioProducto": 27000}
+    ],
+    "precioTotal": (19600 * 2) + (27000)
+  },
+  {
+    "fechaOrden": new Date("2024-10-08"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797216'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f368b'), "cantidad": 7, "precioProducto": 12500 * 7 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3686'), "cantidad": 3, "precioProducto": 31580 * 3 }
+    ],
+    "precioTotal": (12500 * 7) + (31580 * 3)
+  },
+  {
+    "fechaOrden": new Date("2024-10-09"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797217'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3676'), "cantidad": 2, "precioProducto": 12980 * 2 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f367e'), "cantidad": 5, "precioProducto": 12401 * 5 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3688'), "cantidad": 4, "precioProducto": 20300 * 4 },
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f368e'), "cantidad": 9, "precioProducto": 45000 * 9 }
+    ],
+    "precioTotal": (12980 * 2) + (12401 * 5) + (20300 * 4) + (45000 * 9)
+  },
+  {
+    "fechaOrden": new Date("2024-10-10"),
+    "idEmpleado": ObjectId('67355a6f8c076eae07797218'),
+    "productos": [
+      { "idProducto": ObjectId('6738c5f9d6a7ad10178f3689'), "cantidad": 3, "precioProducto": 14500 * 3 }
+    ],
+    "precioTotal": (22000 * 3)
+  }
+]);
