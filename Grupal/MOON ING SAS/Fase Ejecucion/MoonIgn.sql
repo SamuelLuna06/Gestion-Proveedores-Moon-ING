@@ -1,6 +1,7 @@
 create database MoonIng;
 use MoonIng;
 
+
 create table Proveedor (
 	idProveedor	int primary key auto_increment,
 	nomProv	varchar (100) not null,
@@ -13,9 +14,7 @@ create table Proveedor (
 create table Producto (
 	idProducto int primary key auto_increment,
 	nomProducto	varchar(100),
-	idProveedorFK int,
-
-	foreign key (idProveedorFK) references Proveedor(idProveedor)
+	precio float not null
 );
 
 create table Empleado (
@@ -29,6 +28,7 @@ create table Orden (
 	idOrden	int primary key auto_increment,
 	fechaOrden date not null,
 	idEmpleadoFK int,
+    precioTotal float not null,
 	
 	foreign key (idEmpleadoFK) references Empleado(idEmpleado)
 );
@@ -36,10 +36,13 @@ create table Orden (
 create table ordenProducto(
 	idOrdenFK int,
     idProductoFK int,
+    idProveedorFK int,
     cantidad int not null,
+    precioProducto float not null,
     
 	foreign key (idOrdenFK) references Orden(idOrden),
-    foreign key (idProductoFK) references Producto(idProducto)
+    foreign key (idProductoFK) references Producto(idProducto),
+    foreign key (idProveedorFK) references Proveedor(idProveedor)
 );
 
 describe Proveedor;
@@ -87,41 +90,42 @@ insert into Proveedor values ('','ICOMALLAS','BOGOTA','3107140915','ventasbogota
 /*insert para producto*/
 
 
-insert into Producto  values ('','MALLA ZARANDA GALVANIZADA',1),('','MALLAS EXPANDIDAS',1),('','LAMINAS PERFORADAS',1);
-insert into Producto  values ('','GAVON TRIPLE TORSION', 2),('','MALLA TALUD', 2),('','COLCHOGAVIONES', 2);
-insert into Producto  values ('','MALLAS', 3),('','GAVIONES', 3),('','CERRAMIENTOS', 3),('','ESTRUCTURAS', 3);
-insert into Producto  values ('','IMANES PERMANENTES', 4),('','IMANES CERAMICOS', 4),('','IMANES NEODIMIO', 4),('','LAMINA', 4);
-insert into Producto  values ('','PINTURAS Y SELLANTES', 5),('','CANDADOS BICICLETAS', 5),('','CERRADURAS DIGITALES', 5);
-insert into Producto  values ('','TUBERIAS', 6),('','VALVULAS DOBLES', 6),('','ACCESORIOS', 6),('','MONTAJES INDUSTRIALES', 6);
-insert into Producto  values ('','TABLEROS ESTAMPADOS', 7),('','LAMINAS CR', 7),('','LAMINAS HR', 7),('','LAMINAS GALVANIZADAS', 7);
-insert into Producto  values ('','VALVULAS', 8),('','MANOMETROS', 8),('','ELECTRODOS', 8),('','FLACHE', 8),('','TIJERAS', 8);
-insert into Producto  values ('','ALQUILER DE ANDAMIOS CERTIFICADOS', 9),('','ALQUILER DE ANDAMIO TUBULAR', 9);
-insert into Producto  values ('','RUEDAS INDUSTRIALES', 10),('','CARROS Y CANASTILLAS DE MERCADO', 10),('','CARRETILLAS Y PLATAFORMAS', 10);
-insert into Producto  values ('','RUEDAS TRABAJO LIVIANO', 11),('','RUEDAS INDUSTRIALES', 11),('','RODACHINES TRABAJO LIVIANO', 11);
-insert into Producto  values ('','ABRAZIVOS', 12),('','DISCOS DE CORTES', 12),('','ACCESORIOS', 12),('','HERRAMIENTAS', 12);
-insert into Producto  values ('','QUIMICOS ADHESIVOS Y SELLANTES', 13),('','ABRAZADERAS METALICAS', 13),('','ABRAZADERAS NYLON', 13);
-insert into Producto  values ('','ADAPTADOES', 14),('','AICATES', 14),('','ALMADANAS', 14);
-insert into Producto  values ('','PULIDORAS', 15),('','DISPOSITIVOS PORTAHERRAMIENTAS', 15),('','UNIDADES FLEXIBLES', 15);
-insert into Producto  values ('','NIPLES', 16),('','ACCESORIOS', 16),('','FERRETERIA EN GENERAL', 16);
-insert into Producto  values ('','TUBERIAS', 17),('','VALVULAS', 17),('','ACCESORIOS', 17),('','MANGUERAS', 17);
-insert into Producto  values ('','SEÑALIZACION INDUSTRIAL', 18),('','HERRAMIENTAS MECANICAS', 18),('','ACCESORIOS', 18);
-insert into Producto  values ('','HERRAMIENTAS ELECTRICAS', 19),('','HERRAMIENTAS NEUMATICAS', 19),('','HERRAMIENTAS MANUALES', 19);
-insert into Producto  values ('','MOTORES ELECTRICOS MOTORREDUCTORES Y VENTILADOS', 20),('','COTROL INDUSTRIAL', 20);
-insert into Producto  values ('','HERRAMIENTAS MANUALES', 21),('','HERRAMIENTAS ELECTRICAS', 21),('','MANOMETROS', 21);
-insert into Producto  values ('','ACERO', 22),('','PVC', 22),('','SOLDADURAS Y EQUIPOS', 22),('','VIGAS', 22),('','ANGULOS', 22);
-insert into Producto  values ('','HERRAMIENTAS A BATERÍA', 23),('','HERRAMIENTAS ELÉCTRICAS', 23),('','SOFTWARE', 23);
-insert into Producto  values ('','SISTEMAS ESTRUCTURALES', 24),('','BANDEJAS PORTACABLE TIPO ESCALERA', 24);
-insert into Producto  values ('','RESORTES DE COMPRENSION', 25),('','RESORTES DE EXTENSION', 25),('','RESORTES DE TORSION', 25);
-insert into Producto  values ('','ACONDICIONAMIENTO AMBIENTAL Y ENERGÍA - BATERÍAS Y UNIDADES DE DISTRIBUCIÓN', 26),('','AUTOMATIZACIÓN INDUSTRIAL', 26);
-insert into Producto  values ('','VON – MEDIDORES Y EQUIPOS PARA ALTA TENSIÓN', 27),('','NEW COSMOS DETECTORES DE FUGAS DE GAS', 27),('','RION – VIBROMETROS', 27);
-insert into Producto  values ('','EQUIPOS CONTRA INCENDIOS', 28),('','DOTACIONES INDUSTRIALES', 28),('','TECNICO EN EXTINTORES', 28);
-insert into Producto  values ('','CARPINTERIA Y CONSTRUCCION', 29),('','EMBALAJE', 29),('','INSTRUMENTOS MUSICALES', 29);
-insert into Producto  values ('','CELDAS Y TABLEROS', 30),('','CONDUIT', 30),('','APARATOS ELECTRICOS', 30),('','COMUNICACIONES', 30);
-insert into Producto  values ('','INFRAESTRUCTURA ELECTRICA', 31),('','TOMAS Y CLAVIJAS INDUSTRIALES', 31),('','BLOQUEO E IDENTIFICACION INDUSTRIAL', 31);
-insert into Producto  values ('','CABLES', 32),('','COMUNICACIÓN', 32),('','ILUMINACION', 32),('','TUBERIAS', 32);
-insert into Producto  values ('','TRATAMIENTO TERMICO', 33),('','EMBALAJES', 33),('','ESTIBAS.', 33);
-insert into Producto  values ('','TUBERIA GALVANIZADA', 34),('','TUBERIA ESTRUCTURAL', 34);
-insert into Producto  values ('','TRANSMISIONES DE PRESION', 35),('','MANOMETROS', 35),('','SWITCH DE PRESION', 35);
+INSERT INTO Producto VALUES ('', 'MALLA ZARANDA GALVANIZADA', 32455), ('', 'MALLAS EXPANDIDAS', 56342), ('', 'LAMINAS PERFORADAS', 21785);
+INSERT INTO Producto VALUES ('', 'GAVON TRIPLE TORSION', 44678), ('', 'MALLA TALUD', 32987), ('', 'COLCHOGAVIONES', 71432);
+INSERT INTO Producto VALUES ('', 'MALLAS', 62145), ('', 'GAVIONES', 52314), ('', 'CERRAMIENTOS', 45982), ('', 'ESTRUCTURAS', 27564);
+INSERT INTO Producto VALUES ('', 'IMANES PERMANENTES', 56489), ('', 'IMANES CERAMICOS', 21345), ('', 'IMANES NEODIMIO', 67842), ('', 'LAMINA', 42356);
+INSERT INTO Producto VALUES ('', 'PINTURAS Y SELLANTES', 37458), ('', 'CANDADOS BICICLETAS', 67342), ('', 'CERRADURAS DIGITALES', 48521);
+INSERT INTO Producto VALUES ('', 'TUBERIAS', 58214), ('', 'VALVULAS DOBLES', 17685), ('', 'ACCESORIOS', 72463), ('', 'MONTAJES INDUSTRIALES', 29478);
+INSERT INTO Producto VALUES ('', 'TABLEROS ESTAMPADOS', 18572), ('', 'LAMINAS CR', 62435), ('', 'LAMINAS HR', 56314), ('', 'LAMINAS GALVANIZADAS', 48132);
+INSERT INTO Producto VALUES ('', 'VALVULAS', 32465), ('', 'MANOMETROS', 43578), ('', 'ELECTRODOS', 68923), ('', 'FLACHE', 57214), ('', 'TIJERAS', 37685);
+INSERT INTO Producto VALUES ('', 'ALQUILER DE ANDAMIOS CERTIFICADOS', 49321), ('', 'ALQUILER DE ANDAMIO TUBULAR', 57248);
+INSERT INTO Producto VALUES ('', 'RUEDAS INDUSTRIALES', 24513), ('', 'CARROS Y CANASTILLAS DE MERCADO', 69457), ('', 'CARRETILLAS Y PLATAFORMAS', 58214);
+INSERT INTO Producto VALUES ('', 'RUEDAS TRABAJO LIVIANO', 42768), ('', 'RUEDAS INDUSTRIALES', 37562), ('', 'RODACHINES TRABAJO LIVIANO', 63154);
+INSERT INTO Producto VALUES ('', 'ABRAZIVOS', 38412), ('', 'DISCOS DE CORTES', 57348), ('', 'ACCESORIOS', 46235), ('', 'HERRAMIENTAS', 28412);
+INSERT INTO Producto VALUES ('', 'QUIMICOS ADHESIVOS Y SELLANTES', 41934), ('', 'ABRAZADERAS METALICAS', 53821), ('', 'ABRAZADERAS NYLON', 62534);
+INSERT INTO Producto VALUES ('', 'ADAPTADOES', 37148), ('', 'AICATES', 49238), ('', 'ALMADANAS', 62175);
+INSERT INTO Producto VALUES ('', 'PULIDORAS', 59382), ('', 'DISPOSITIVOS PORTAHERRAMIENTAS', 31245), ('', 'UNIDADES FLEXIBLES', 67234);
+INSERT INTO Producto VALUES ('', 'NIPLES', 45934), ('', 'ACCESORIOS', 52534), ('', 'FERRETERIA EN GENERAL', 31265);
+INSERT INTO Producto VALUES ('', 'TUBERIAS', 67312), ('', 'VALVULAS', 42564), ('', 'ACCESORIOS', 37452), ('', 'MANGUERAS', 56214);
+INSERT INTO Producto VALUES ('', 'SEÑALIZACION INDUSTRIAL', 47214), ('', 'HERRAMIENTAS MECANICAS', 62134), ('', 'ACCESORIOS', 28345);
+INSERT INTO Producto VALUES ('', 'HERRAMIENTAS ELECTRICAS', 51672), ('', 'HERRAMIENTAS NEUMATICAS', 48213), ('', 'HERRAMIENTAS MANUALES', 69324);
+INSERT INTO Producto VALUES ('', 'MOTORES ELECTRICOS MOTORREDUCTORES Y VENTILADOS', 57162), ('', 'COTROL INDUSTRIAL', 38642);
+INSERT INTO Producto VALUES ('', 'HERRAMIENTAS MANUALES', 62175), ('', 'HERRAMIENTAS ELECTRICAS', 32486), ('', 'MANOMETROS', 47563);
+INSERT INTO Producto VALUES ('', 'ACERO', 71234), ('', 'PVC', 32645), ('', 'SOLDADURAS Y EQUIPOS', 48135), ('', 'VIGAS', 57321), ('', 'ANGULOS', 39872);
+INSERT INTO Producto VALUES ('', 'HERRAMIENTAS A BATERÍA', 61452), ('', 'HERRAMIENTAS ELÉCTRICAS', 38512), ('', 'SOFTWARE', 45321);
+INSERT INTO Producto VALUES ('', 'SISTEMAS ESTRUCTURALES', 52831), ('', 'BANDEJAS PORTACABLE TIPO ESCALERA', 61324);
+INSERT INTO Producto VALUES ('', 'RESORTES DE COMPRENSION', 38562), ('', 'RESORTES DE EXTENSION', 62435), ('', 'RESORTES DE TORSION', 57341);
+INSERT INTO Producto VALUES ('', 'ACONDICIONAMIENTO AMBIENTAL Y ENERGÍA - BATERÍAS Y UNIDADES DE DISTRIBUCIÓN', 49285), ('', 'AUTOMATIZACIÓN INDUSTRIAL', 61472);
+INSERT INTO Producto VALUES ('', 'VON – MEDIDORES Y EQUIPOS PARA ALTA TENSIÓN', 48325), ('', 'NEW COSMOS DETECTORES DE FUGAS DE GAS', 57231), ('', 'RION – VIBROMETROS', 62518);
+INSERT INTO Producto VALUES ('', 'EQUIPOS CONTRA INCENDIOS', 28475), ('', 'DOTACIONES INDUSTRIALES', 57234), ('', 'TECNICO EN EXTINTORES', 48975);
+INSERT INTO Producto VALUES ('', 'CARPINTERIA Y CONSTRUCCION', 31265), ('', 'EMBALAJE', 47231), ('', 'INSTRUMENTOS MUSICALES', 63254);
+INSERT INTO Producto VALUES ('', 'CELDAS Y TABLEROS', 62138), ('', 'CONDUIT', 38425), ('', 'APARATOS ELECTRICOS', 51274), ('', 'COMUNICACIONES', 61324);
+INSERT INTO Producto VALUES ('', 'INFRAESTRUCTURA ELECTRICA', 39485), ('', 'TOMAS Y CLAVIJAS INDUSTRIALES', 57245), ('', 'BLOQUEO E IDENTIFICACION INDUSTRIAL', 62548);
+INSERT INTO Producto VALUES ('', 'CABLES', 48931), ('', 'COMUNICACIÓN', 39482), ('', 'ILUMINACION', 56342), ('', 'TUBERIAS', 48214);
+INSERT INTO Producto VALUES ('', 'TRATAMIENTO TERMICO', 41285), ('', 'EMBALAJES', 56312), ('', 'ESTIBAS.', 49324);
+INSERT INTO Producto VALUES ('', 'TUBERIA GALVANIZADA', 47214), ('', 'TUBERIA ESTRUCTURAL', 53248);
+INSERT INTO Producto VALUES ('', 'TRANSMISIONES DE PRESION', 51426), ('', 'MANOMETROS', 38412), ('', 'SWITCH DE PRESION', 62534);
+
 
 
 
@@ -183,70 +187,78 @@ insert into Empleado (nomEmpleado, CCEmpleado, estadoEmpleado) values
 
 /*Insert para Orden*/
 
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-05-12', 5);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-07-24', 12);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-03-11', 23);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-08-30', 4);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-01-15', 8);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-11-09', 19);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-04-18', 32);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-06-05', 7);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-09-21', 21);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-12-03', 35);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-10-14', 44);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-02-09', 29);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-06-22', 15);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-03-13', 38);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-12-27', 9);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-08-31', 24);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-02-20', 42);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-04-07', 18);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-03-30', 1);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-11-11', 46);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-07-25', 13);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-05-19', 27);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-07-02', 10);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-02-16', 3);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-08-14', 41);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-01-06', 33);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-06-10', 17);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-09-08', 2);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-09-30', 36);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-11-16', 48);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-05-05', 26);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-12-01', 50);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-10-20', 14);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-10-01', 11);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-12-09', 6);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-08-11', 45);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-04-24', 20);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-09-19', 37);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-03-22', 47);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-10-05', 31);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-07-29', 25);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-04-13', 39);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-06-15', 16);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-05-19', 43);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2023-01-30', 30);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2021-12-12', 22);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2022-09-04', 28);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-11-27', 34);
-insert into Orden (fechaOrden, idEmpleadoFK) values ('2024-11-27', 34);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-05-12', 5, 54321);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-07-24', 12, 87432);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-03-11', 23, 23985);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-08-30', 4, 61542);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-01-15', 8, 49821);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-11-09', 19, 73451);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-04-18', 32, 19842);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-06-05', 7, 85231);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-09-21', 21, 42983);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-12-03', 35, 65742);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-10-14', 44, 73128);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-02-09', 29, 19425);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-06-22', 15, 57412);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-03-13', 38, 62358);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-12-27', 9, 45128);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-08-31', 24, 78321);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-02-20', 42, 59231);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-04-07', 18, 82731);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-03-30', 1, 19384);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-11-11', 46, 67429);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-07-25', 13, 85291);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-05-19', 27, 37142);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-07-02', 10, 24931);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-02-16', 3, 91284);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-08-14', 41, 45231);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-01-06', 33, 17384);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-06-10', 17, 84127);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-09-08', 2, 29485);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-09-30', 36, 67431);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-11-16', 48, 73821);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-05-05', 26, 53284);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-12-01', 50, 98214);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-10-20', 14, 54231);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-10-01', 11, 81247);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-12-09', 6, 27183);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-08-11', 45, 95431);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-04-24', 20, 38271);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-09-19', 37, 17384);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-03-22', 47, 61428);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-10-05', 31, 29138);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-07-29', 25, 83429);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-04-13', 39, 19483);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-06-15', 16, 75821);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-05-19', 43, 29384);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2023-01-30', 30, 84732);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2021-12-12', 22, 61839);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2022-09-04', 28, 37418);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-11-27', 34, 27149);
+insert into orden (fechaOrden, idEmpleadoFK, precioTotal) values ('2024-11-27', 34, 84921);
 
-select * from Orden;
+
+select * from ordenProducto;
+
+
 /*insert ordenProducto*/ 
 
 describe ordenProducto;
 
-insert into ordenProducto (idOrdenFK, idProductoFK, cantidad) values (14, 3, 15),(25, 12, 10),(14, 8, 20),
-(8, 19, 5),(41, 22, 12),(1, 36, 30),(35, 13, 18),(18, 40, 25),(3, 14, 8),(33, 45, 10),(38, 33, 15),(7, 1, 5),(14, 6, 10),(21, 17, 7),(19, 31, 20),
-(24, 24, 12),(23, 21, 9),(4, 38, 13),(10, 30, 17),(36, 41, 25),(34, 26, 8),(11, 16, 12),(12, 23, 10),(39, 9, 18),(28, 34, 5),(4, 5, 11),(27, 20, 7),
-(20, 10, 15),(9, 29, 20),(17, 37, 25),(22, 15, 12),(2, 39, 10),(13, 18, 8),(32, 25, 15),(5, 11, 18),(42, 7, 5),(30, 27, 12),(14, 2, 14),(8, 4, 22),
-(41, 35, 10),(14, 32, 30),(27, 28, 25),(18, 44, 20),(36, 42, 13),(42, 12, 18),(7, 3, 9),(3, 16, 12),(23, 1, 15),(19, 26, 8),(12, 41, 30);
+insert into ordenProducto (idOrdenFK, idProductoFK, idProveedorFK, cantidad, precioProducto) values 
+(14, 3, 12, 15, 45321),(25, 12, 8, 10, 64329),(14, 8, 26, 20, 37219),(8, 19, 14, 5, 58214),(41, 22, 5, 12, 49185),(1, 36, 30, 30, 61432),(35, 13, 9, 18, 29571),(18, 40, 22, 25, 52816),
+(3, 14, 18, 8, 30194),(33, 45, 4, 10, 65742),(38, 33, 19, 15, 51429),(7, 1, 25, 5, 32784),(14, 6, 35, 10, 42816),(21, 17, 2, 7, 59214),(19, 31, 16, 20, 67352),(24, 24, 1, 12, 48219),
+(23, 21, 13, 9, 35210),(4, 38, 7, 13, 59432),(10, 30, 11, 17, 41982),(36, 41, 23, 25, 67214),(34, 26, 3, 8, 58217),(11, 16, 28, 12, 37291),(12, 23, 21, 10, 49213),(39, 9, 27, 18, 52847),
+(28, 34, 17, 5, 60123),(4, 5, 6, 11, 31542),(27, 20, 33, 7, 49182),(20, 10, 20, 15, 57832),(9, 29, 10, 20, 62143),(17, 37, 32, 25, 68432),(22, 15, 24, 12, 38942),(2, 39, 15, 10, 45281),
+(13, 18, 34, 8, 52749),(32, 25, 31, 15, 67132),(5, 11, 12, 18, 49831),(42, 7, 29, 5, 61523),(30, 27, 8, 12, 38274),(14, 2, 35, 14, 47192),(8, 4, 30, 22, 68914),(41, 35, 21, 10, 50239),
+(14, 32, 25, 30, 53142),(27, 28, 19, 25, 48912),(18, 44, 13, 20, 42185),(36, 42, 17, 13, 61239),(42, 12, 28, 18, 58471),(7, 3, 5, 9, 45738),(3, 16, 24, 12, 39412),(23, 1, 9, 15, 60129),
+(19, 26, 12, 8, 52984),(12, 41, 14, 30, 62184);
+
+
 
 /*CONSULTA BASICA*/
 
-select * from ordenProducto;
+select * from Proveedor;
 
 /*CONSULTAR ESPECIFICAS*/
 
@@ -296,3 +308,47 @@ update Proveedor set contacto = '3215956284' where idProveedor = 2;
 /*ELIMINACION*/
 
 delete from Empleado where idEmpleado = 49;
+
+
+
+/* RQM CLASE PRODUCTO */
+SELECT * FROM Producto ORDER BY precio DESC;
+SELECT * FROM Producto ORDER BY precio ASC;
+SELECT * FROM Producto ORDER BY nomProducto DESC;
+SELECT * FROM Producto ORDER BY nomProducto ASC;
+UPDATE Producto SET nomProducto = 'Acero Galvanizado' WHERE id = 12;
+UPDATE Producto SET precio = 50000 WHERE id = 12;
+SELECT * FROM Producto WHERE id = 12;
+
+/* RQM CLASE PROVEEDOR*/
+UPDATE Proveedores SET nomProv = 'Don Aceros' WHERE id = 3;
+UPDATE Proveedores SET direccion = 'Cll 8 bis A' WHERE id = 3;
+UPDATE Proveedores SET ubicacion = 'MEDELLIN' WHERE id = 5;
+UPDATE Proveedores SET contacto = '3214459100' WHERE id = 5;
+UPDATE Proveedores SET correo = 'jesus.example@urosario.com' WHERE id = 7;
+SELECT * FROM Proveedores WHERE ubicacion = 'MEDELLIN';
+SELECT * FROM Proveedores ORDER BY nomProv ASC;
+SELECT * FROM Proveedores ORDER BY nomProv DESC;
+SELECT * FROM Proveedores ORDER BY contacto ASC;
+SELECT * FROM Proveedores ORDER BY contacto DESC;
+SELECT * FROM Proveedores ORDER BY correo ASC;
+SELECT * FROM Proveedores ORDER BY correo DESC;
+SELECT * FROM Proveedores WHERE id = 3;
+
+/* RQM CLASE EMPLEADOS*/
+SELECT * FROM Empleado WHERE estadoEmpleado = TRUE;
+SELECT * FROM Empleado WHERE estadoEmpleado = FALSE;
+SELECT * FROM Empleado ORDER BY CCEmpleado DESC;
+SELECT * FROM Empleado ORDER BY CCEmpleado ASC;
+SELECT * FROM Empleado ORDER BY nomEmpleado DESC;
+SELECT * FROM Empleado ORDER BY nomEmpleado ASC;
+SELECT * FROM Empleado WHERE id = 15;
+
+/* RQF CLASE ORDEN*/
+UPDATE Orden SET fechaOrden = '2024-11-24' WHERE id = 20;
+SELECT * FROM Orden ORDER BY precioTotal ASC;
+SELECT * FROM Orden ORDER BY precioTotal DESC;
+SELECT * FROM Orden ORDER BY fechaOrden ASC;
+SELECT * FROM Orden ORDER BY fechaOrden DESC;
+SELECT * FROM Orden WHERE fechaOrden BETWEEN '2024-11-20' AND '2024-11-24';
+SELECT * FROM Orden WHERE id = 20;
